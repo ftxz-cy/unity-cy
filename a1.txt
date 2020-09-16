@@ -1,4 +1,0 @@
-day1:
-    I go to scoogle;
-day2:
-    I do my homework;
