@@ -17,8 +17,12 @@ public class AudioManager : MonoBehaviour {
     AudioSource[] effect_as;
 
     int curr_effect_as;
+
+    static isInit = false;
+
     void init () {
-        //init attr
+        if(init == true) return;
+        //init attr        
         max_effect_num = 8;
         music_mute = false;
         effect_mute = false;
@@ -36,6 +40,8 @@ public class AudioManager : MonoBehaviour {
             effect_as[i] = gameobject.addComponent<AudioSource> ();
         }
 
+        //记录是否初始化过了
+        isInit = true;
     }
 
     public static float musicVolume {
@@ -78,7 +84,7 @@ public class AudioManager : MonoBehaviour {
             return effect_mut;
         }
     }
-    //播放/继续/重新 bgm
+    //开始/继续/重新 播放bgm
     public static void PlayMusic (AudioClip clip) {
         if (clip == null) return;
         music_as.clip = clip;
